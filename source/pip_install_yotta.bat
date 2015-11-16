@@ -16,9 +16,11 @@
 ::
 :: Set python\scripts variable because the environment hasnt been updated since python install.
 set YOTTA_PATH=;%1;%1\gcc\bin;%1\python;%1\python\Scripts;%1\cmake-3.4.0-rc3-win32-x86\bin;%1\git-scm\bin;%1\mercurial\bin;
-setx YOTTA_PATH %YOTTA_PATH%
+setx YOTTA_PATH %YOTTA_PATH% \m
+if errorlevel 1 setx YOTTA_PATH %YOTTA_PATH%
 set PATH=%YOTTA_PATH%;%PATH%
-setx YOTTA_INSTALL_LOCATION %1
+setx YOTTA_INSTALL_LOCATION %1 \m
+if errorlevel 1 setx YOTTA_INSTALL_LOCATION %1
 
 :: install virtual environment
 pip install virtualenv 
